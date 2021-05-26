@@ -2,6 +2,8 @@ FROM	debian:buster
 
 LABEL	maintainer="kicpark@student.42seoul.kr"
 
+ENV AUTOINDEX on
+
 RUN	apt-get update && apt-get install -y \
 	nginx \
 	mariadb-server \
@@ -14,6 +16,7 @@ RUN	apt-get update && apt-get install -y \
 
 COPY	./srcs/run.sh ./
 COPY	./srcs/default ./tmp
+COPY	./srcs/non_auto_default ./tmp
 COPY	./srcs/wp-config.php ./tmp
 COPY	./srcs/config.inc.php ./tmp
 
